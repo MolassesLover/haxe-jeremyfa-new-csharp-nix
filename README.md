@@ -1,5 +1,5 @@
 # Haxe - Experimental C# Target
-This is a Nix package for [@jeremyfa}(https://github.com/jeremyfa)'s Haxe fork,
+This is a Nix package for [@jeremyfa](https://github.com/jeremyfa)'s Haxe fork,
 following the [`new_csharp`](https://github.com/jeremyfa/haxe/tree/new_csharp)
 branch, implementing an experimental C# target.
 
