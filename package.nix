@@ -56,6 +56,37 @@ let
       };
     })
   );
+  
+  ppx_parser = (
+    ocamlPackages.buildDunePackage (finalAttrs: {
+      pname = "ppx_parser";
+      version = "0.2.0";
+
+      minimalOCamlVersion = "4.8";
+
+      src = fetchFromGitHub {
+        owner = "NielsMommen";
+        repo = "ppx_parser";
+        tag = "0.2.0";
+        hash = "sha256-+TvpBzo42UC29XYQZGEQfs4I4PFosJvCdpL1zSdQymg=";
+      };
+
+      buildInputs = [
+      	ocamlPackages.ppxlib
+    	ocamlPackages.alcotest
+	ocamlPackages.camlp-streams
+	ocamlPackages.ppx_deriving
+      ];
+
+      doCheck = lib.versionAtLeast pkgs.ocaml.version "4.8";
+
+      meta = {
+        homepage = "https://github.com/NielsMommen/ppx_parser";
+        description = "Write stream parser in OCaml using ppx extensions";
+        license = lib.licenses.isc;
+      };
+    })
+  );
 in
 
 with ocamlPackages;
@@ -69,11 +100,28 @@ pkgs.haxe.overrideAttrs (previousAttrs: {
     url = "https://github.com/jeremyfa/haxe.git";
   };
 
-  buildInputs = pkgs.haxe.buildInputs ++ [
-    thread-local-storage
-    dynamic_gc
-    ocamlPackages.saturn
+  buildInputs = [
+    pkgs.dune
+    pkgs.neko
+    pkgs.zlib
+
+    ocamlPackages.camlp5
     ocamlPackages.domainslib
+    ocamlPackages.extlib
+    ocamlPackages.findlib
+    ocamlPackages.luv
+    ocamlPackages.ocaml
+    ocamlPackages.ptmap
+    ocamlPackages.saturn
+    ocamlPackages.sedlex
+    ocamlPackages.sha
+    ocamlPackages.xml-light
+    ocamlPackages.terminal_size
+    ocamlPackages.ipaddr
+
+    dynamic_gc
+    thread-local-storage
+    ppx_parser
   ];
 
   patches = [ ];
