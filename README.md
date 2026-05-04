@@ -8,6 +8,3 @@ branch, implementing an experimental C# target.
 Please see this 
 [draft pull request](https://github.com/HaxeFoundation/haxe/pull/12575)
 for additional information.
-
-## State
-This package does not currently build, failing with an unbound value error.
