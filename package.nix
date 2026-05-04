@@ -6,8 +6,8 @@
   ...
 }:
 let
-  ocamlPackages = pkgs.ocaml-ng.ocamlPackages_5_0;
-  #ocamlPackages = pkgs.ocamlPackages;
+  #ocamlPackages = pkgs.ocaml-ng.ocamlPackages_5_0;
+  ocamlPackages = pkgs.ocamlPackages;
 
   dynamic_gc = (
     ocamlPackages.buildDunePackage (finalAttrs: {
@@ -60,15 +60,15 @@ let
   ppx_parser = (
     ocamlPackages.buildDunePackage (finalAttrs: {
       pname = "ppx_parser";
-      version = "0.2.0";
+      version = "0.2.1";
 
       minimalOCamlVersion = "4.8";
 
       src = fetchFromGitHub {
         owner = "NielsMommen";
         repo = "ppx_parser";
-        tag = "0.2.0";
-        hash = "sha256-+TvpBzo42UC29XYQZGEQfs4I4PFosJvCdpL1zSdQymg=";
+        tag = "0.2.1";
+        hash = "sha256-kmPoZzWc1qTc/raHf2Qle8OFFj+ctHN49uBXGJ3cRTI";
       };
 
       buildInputs = [
@@ -102,7 +102,9 @@ pkgs.haxe.overrideAttrs (previousAttrs: {
 
   buildInputs = [
     pkgs.dune
+    pkgs.mbedtls
     pkgs.neko
+    pkgs.pcre2
     pkgs.zlib
 
     ocamlPackages.camlp5
