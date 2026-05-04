@@ -56,7 +56,7 @@ let
       };
     })
   );
-  
+
   ppx_parser = (
     ocamlPackages.buildDunePackage (finalAttrs: {
       pname = "ppx_parser";
@@ -72,10 +72,10 @@ let
       };
 
       buildInputs = [
-      	ocamlPackages.ppxlib
-    	ocamlPackages.alcotest
-	ocamlPackages.camlp-streams
-	ocamlPackages.ppx_deriving
+        ocamlPackages.ppxlib
+        ocamlPackages.alcotest
+        ocamlPackages.camlp-streams
+        ocamlPackages.ppx_deriving
       ];
 
       doCheck = lib.versionAtLeast pkgs.ocaml.version "4.8";
